@@ -3,7 +3,7 @@ exports.up = function(knex) {
 		table.increments();
 		table.text('title');
 		table.text('description');
-		table.float('string');
+		table.float('rating');
 		table.text('url');
 	});
 };
