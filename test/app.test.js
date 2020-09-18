@@ -29,4 +29,17 @@ describe('CRUD Stickers', () => {
 				done();
 			});
 	});
+
+	it('lists a record by id', (done) => {
+		request(app)
+			.get('/api/v1/stickers/1')
+			.set('Accept', 'application/json')
+			.expect('Content-Type', /json/)
+			.expect(200)
+			.then((res) => {
+				expect(res.body).to.be.a('object');
+				expect(res.body).to.deep.equal(fixtures.stickers[0]);
+				done();
+			});
+	});
 });
