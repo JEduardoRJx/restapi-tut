@@ -4,5 +4,9 @@ module.exports = {
 	development: {
 		client: 'pg',
 		connection: 'postgres://localhost/webstore'
-	}
+  },
+  test: {
+		client: 'pg',
+		connection: 'postgres://localhost/test-webstore'
+  },
 };
