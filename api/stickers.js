@@ -18,8 +18,8 @@ function validSticker(sticker) {
 }
 
 router.get('/', (req, res) => {
-  const { title } = req.query
-	queries.getAll({ title }).then((stickers) => {
+	const { title, description } = req.query;
+	queries.getAll({ title, description }).then((stickers) => {
 		res.json(stickers);
 	});
 });

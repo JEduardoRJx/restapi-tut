@@ -6,6 +6,9 @@ module.exports = {
 		const knexQuery = knex('sticker');
 		if (query.title) {
 			knexQuery.where('title', 'like', `%${query.title}%`);
+    }
+    if (query.description) {
+			knexQuery.where('description', 'like', `%${query.description}%`);
 		}
 		return knexQuery;
 	},
