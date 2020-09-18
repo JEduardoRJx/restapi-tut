@@ -71,6 +71,14 @@ const stickers = [
 	}
 ];
 
+const sticker = {
+	title: 'PS5',
+	description: 'PS5 Logo',
+	rating: 10,
+	url: '/ps5_sticker'
+};
+
 module.exports = {
-	stickers
+	stickers,
+	sticker
 };

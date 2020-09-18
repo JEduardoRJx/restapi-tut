@@ -4,6 +4,7 @@ const request = require('supertest');
 const app = require('../app');
 const expect = require('chai').expect;
 const fixtures = require('./fixtures');
+const assert = require('assert');
 
 describe('CRUD Stickers', () => {
 	before((done) => {
@@ -40,6 +41,24 @@ describe('CRUD Stickers', () => {
 				expect(res.body).to.be.a('object');
 				expect(res.body).to.deep.equal(fixtures.stickers[0]);
 				done();
+			});
+	});
+
+	it('create a record', (done) => {
+		request(app)
+			.post('/api/v1/stickers')
+			.send(fixtures.sticker)
+			.set('Accept', 'application/json')
+			.expect('Content-Type', /json/)
+			.expect(200)
+			.then((res) => {
+				expect(res.body).to.be.a('object');
+				fixtures.sticker.id == res.body.id;
+				expect(res.body).to.deep.equal(fixtures.sticker);
+				done();
+			})
+			.catch((error) => {
+				return error && done();
 			});
 	});
 });
