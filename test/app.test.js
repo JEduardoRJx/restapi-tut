@@ -80,4 +80,24 @@ describe('CRUD Stickers', () => {
 				return error && done();
 			});
 	});
+
+	it('deletes a record', (done) => {
+		request(app)
+			.delete('/api/v1/stickers/10')
+			.send(fixtures.sticker)
+			.set('Accept', 'application/json')
+			.expect('Content-Type', /json/)
+			.expect(200)
+			.then((res) => {
+				expect(res.body).to.be.a('object');
+				fixtures.sticker.id == res.body.id;
+				expect(res.body).to.deep.equal({
+					deleted: true
+				});
+				done();
+			})
+			.catch((error) => {
+				return error && done();
+			});
+	});
 });
